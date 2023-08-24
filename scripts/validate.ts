@@ -4,6 +4,7 @@ import {
   OptimisticOracleV3__factory,
   RatedOracle__factory,
 } from "./types/factories";
+import { RatedOracle } from "./types";
 
 // Replace with the actual contract addresses
 const ratedOracleAddress =
@@ -40,7 +41,7 @@ async function fetchReportViolations(reportId: number) {
 }
 
 // Function to validate a violation
-async function validateViolation(violation: any) {
+async function validateViolation(violation: RatedOracle.ViolationStructOutput) {
   // Fetch validator's public key using getPubkeyRoot function
   const validatorPubkey = await ratedOracleContract.getPubkeyRoot(
     violation.validatorIdentifier
